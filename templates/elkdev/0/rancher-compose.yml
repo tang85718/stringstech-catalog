@@ -1,0 +1,13 @@
+.catalog:
+  name: "elasticsearch" # Name of the versioned template of the Catalog Entry
+  version: "6.1.1-stringstech" # Version of the versioned template of the Catalog Entry
+  description: "琴弦科技开发用" # Description of the versioned template of the Catalog Entry
+  #uuid: # Unique identifier to be used for upgrades. Please see note.
+  #minimum_rancher_version: # The minimum version of Rancher that supports the template
+  questions: #Used to request user input for configuration options
+    - variable: "password"
+      required: true
+      description: "elasticsearch 密码"
+      label: "密码"
+      type: "string"
+      default: "stringstech"
