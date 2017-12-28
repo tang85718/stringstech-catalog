@@ -1,8 +1,8 @@
 name: elk-quick
 description: |
-  ELK 快速单点  # Description of the Catalog Entry
+  ELK 快速单点
 version: 6.1.1-stringstech # Version of the Catalog to be used
-category: ELK # Category to be used for searching catalog entries
+category: Stringstech # Category to be used for searching catalog entries
 maintainer: tangxuyao # The maintainer of the catalog entry
 # license: # The license
 # projectURL: # A URL related to the catalog entry
