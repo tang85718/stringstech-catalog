@@ -47,7 +47,7 @@ services:
 
   logstash-config:
     restart: always
-    image: 10.0.1.200:5000/confd:1.0
+    image: 10.0.1.200:5000/confd:latest
 
 volumes:
   esdata:
