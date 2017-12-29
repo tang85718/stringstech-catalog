@@ -13,6 +13,7 @@ services:
       interval: 2000
       strategy: recreate
       reinitializing_timeout: 60000
+
 .catalog:
   name: "elasticsearch" # Name of the versioned template of the Catalog Entry
   version: "6.1.1-stringstech" # Version of the versioned template of the Catalog Entry
