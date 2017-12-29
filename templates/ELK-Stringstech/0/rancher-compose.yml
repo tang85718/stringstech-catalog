@@ -1,3 +1,61 @@
+.catalog:
+  name: "elasticsearch" # Name of the versioned template of the Catalog Entry
+  version: "6.1.1-stringstech" # Version of the versioned template of the Catalog Entry
+  description: "琴弦科技开发用" # Description of the versioned template of the Catalog Entry
+  #uuid: # Unique identifier to be used for upgrades. Please see note.
+  #minimum_rancher_version: # The minimum version of Rancher that supports the template
+  questions: #Used to request user input for configuration options
+    - variable: "password"
+      required: true
+      description: "elasticsearch 密码"
+      label: "密码"
+      type: "string"
+      default: "stringstech"
+    - variable: "logstash_configs"
+      required: true
+      description: "logstash all config"
+      label: "logstash config"
+      default: |
+        input {
+          beats {
+            type => "stat"
+            port => 5044
+          }
+        }
+
+        filter {
+          json {
+            source => "message"
+          }
+        }
+
+        output {
+          elasticsearch {
+            hosts => ["elasticsearch:9200"]
+          }
+        }
+      type: "multiline"
+    - variable: "logstash_yml"
+      required: true
+      description: "yml configs"
+      label: "yml配置文件内容:"
+      default: |
+        http.host: "0.0.0.0"
+        path.config: /usr/share/logstash/pipeline
+        xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
+        xpack.monitoring.elasticsearch.username: logstash_system
+        xpack.monitoring.elasticsearch.password: changeme
+      type: "multiline"
+
+logstash:
+  metadata:
+    logstash:
+      configs: |
+        ${logstash_configs}
+      yml: |
+        ${logstash_yml}
+
+
 version: '2'
 services:
   elasticsearch-master:
@@ -13,17 +71,3 @@ services:
       interval: 2000
       strategy: recreate
       reinitializing_timeout: 60000
-
-.catalog:
-  name: "elasticsearch" # Name of the versioned template of the Catalog Entry
-  version: "6.1.1-stringstech" # Version of the versioned template of the Catalog Entry
-  description: "琴弦科技开发用" # Description of the versioned template of the Catalog Entry
-  #uuid: # Unique identifier to be used for upgrades. Please see note.
-  #minimum_rancher_version: # The minimum version of Rancher that supports the template
-  questions: #Used to request user input for configuration options
-    - variable: "password"
-      required: true
-      description: "elasticsearch 密码"
-      label: "密码"
-      type: "string"
-      default: "stringstech"

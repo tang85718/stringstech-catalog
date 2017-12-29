@@ -29,6 +29,26 @@ services:
     labels:
       io.rancher.container.pull_image: always
 
+  logstash:
+    image: docker.elastic.co/logstash/logstash:6.1.1
+    stdin_open: true
+    tty: true
+    volumes_from:
+      - logstash-config
+    command:
+      - logstash
+      - -f
+      - /etc/logstash
+    links:
+      - elasticsearch-master:elasticsearch
+    labels:
+      io.rancher.sidekicks: logstash-config
+      io.rancher.container.pull_image: always
+
+  logstash-config:
+    restart: always
+    image: 10.0.1.200:5000/confd:1.0
+
 volumes:
   esdata:
     driver: local
