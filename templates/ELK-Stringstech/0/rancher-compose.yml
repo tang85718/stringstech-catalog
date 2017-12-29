@@ -5,12 +5,12 @@
   #uuid: # Unique identifier to be used for upgrades. Please see note.
   #minimum_rancher_version: # The minimum version of Rancher that supports the template
   questions: #Used to request user input for configuration options
-    - variable: "password"
-      required: true
-      description: "elasticsearch 密码"
-      label: "密码"
-      type: "string"
-      default: "stringstech"
+#    - variable: "password"
+#      required: true
+#      description: "elasticsearch 密码"
+#      label: "密码"
+#      type: "string"
+#      default: "stringstech"
     - variable: "logstash_configs"
       required: true
       description: "logstash all config"
