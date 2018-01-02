@@ -18,7 +18,6 @@
       default: |
         input {
           beats {
-            type => "stat"
             port => 5044
           }
         }
