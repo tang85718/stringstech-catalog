@@ -35,10 +35,10 @@ services:
     tty: true
     volumes_from:
       - logstash-config
-#    command:
-#      - logstash
-#      - -f
-#      - /etc/logstash
+    command:
+      - logstash
+      - -f
+      - /etc/logstash
     links:
       - elasticsearch-master:elasticsearch
     labels:
