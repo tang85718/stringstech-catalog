@@ -57,6 +57,7 @@ services:
       - config-filebeat
     command:
       - filebeat
+      - -e
       - -c
       - /etc/filebeat/filebeat.yml
     links:
