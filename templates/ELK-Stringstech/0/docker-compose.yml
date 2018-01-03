@@ -28,7 +28,7 @@ services:
       - 5601:5601/tcp
     labels:
       io.rancher.container.pull_image: always
-  logstash-config:
+  config-master:
     restart: always
     image: 10.0.1.200:5000/confd:latest
   logstash:
@@ -36,7 +36,7 @@ services:
     stdin_open: true
     tty: true
     volumes_from:
-      - logstash-config
+      - config-master
     command:
       - logstash
       - -f
@@ -44,17 +44,14 @@ services:
     links:
       - elasticsearch-master:elasticsearch
     labels:
-      io.rancher.sidekicks: logstash-config
+      io.rancher.sidekicks: config-master
       io.rancher.container.pull_image: always
-  filebeat-config:
-    restart: always
-    image: 10.0.1.200:5000/confd:latest
   filebeat:
     image: docker.elastic.co/beats/filebeat:6.1.1
     stdin_open: true
     tty: true
     volumes_from:
-      - filebeat-config
+      - config-master
     command:
       - filebeat
       - -c
@@ -63,7 +60,7 @@ services:
       - logstash:logstash
     labels:
       io.rancher.scheduler.global: 'true'
-      io.rancher.sidekicks: filebeat-config
+      io.rancher.sidekicks: config-master
       io.rancher.container.pull_image: always
 
 
