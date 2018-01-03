@@ -57,9 +57,9 @@ services:
       - config-filebeat
     command:
       - filebeat
-      - -e
       - -c
       - /etc/filebeat/filebeat.yml
+      - -e
     links:
       - logstash:logstash
     labels:
