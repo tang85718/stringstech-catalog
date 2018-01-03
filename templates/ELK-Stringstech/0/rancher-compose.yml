@@ -1,7 +1,15 @@
 .catalog:
   name: "elasticsearch" # Name of the versioned template of the Catalog Entry
   version: "6.1.1-stringstech" # Version of the versioned template of the Catalog Entry
-  description: "琴弦科技开发用" # Description of the versioned template of the Catalog Entry
+  description: |
+    filebeat默认设置如下:
+    filebeat.prospectors:
+    - type: log
+      enabled: true
+      paths:
+        - /etc/log/*.log
+    logging.level: debug
+
   #uuid: # Unique identifier to be used for upgrades. Please see note.
   #minimum_rancher_version: # The minimum version of Rancher that supports the template
   questions: #Used to request user input for configuration options
@@ -11,6 +19,17 @@
 #      label: "密码"
 #      type: "string"
 #      default: "stringstech"
+#    - variable: "logstash_yml"
+#      required: true
+#      description: "yml configs"
+#      label: "yml配置文件内容:"
+#      default: |
+#        http.host: "0.0.0.0"
+#        path.config: /usr/share/logstash/pipeline
+#        xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
+#        xpack.monitoring.elasticsearch.username: logstash_system
+#        xpack.monitoring.elasticsearch.password: changeme
+#      type: "multiline"
     - variable: "logstash_configs"
       required: true
       description: "logstash all config"
@@ -34,17 +53,13 @@
           }
         }
       type: "multiline"
-#    - variable: "logstash_yml"
-#      required: true
-#      description: "yml configs"
-#      label: "yml配置文件内容:"
-#      default: |
-#        http.host: "0.0.0.0"
-#        path.config: /usr/share/logstash/pipeline
-#        xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
-#        xpack.monitoring.elasticsearch.username: logstash_system
-#        xpack.monitoring.elasticsearch.password: changeme
-#      type: "multiline"
+    - variable: "filebeat_hosts"
+      type: "string"
+      required: true
+      description: "设置主机地址，例如: logstash:5044"
+      label: "设置主机地址"
+      default: |
+        ["logstash:5044"]
 
 logstash:
   metadata:
@@ -53,8 +68,13 @@ logstash:
         ${logstash_configs}
 #      yml: |
 #        ${logstash_yml}
+filebeat:
+  metadata:
+    fb:
+      hosts: |
+        ${filebeat_hosts}
 
-
+# 不能加入如下语句，会导致生成配置文件失败.
 #version: '2'
 #services:
 #  elasticsearch-master:
