@@ -34,39 +34,39 @@
           }
         }
       type: "multiline"
-    - variable: "logstash_yml"
-      required: true
-      description: "yml configs"
-      label: "yml配置文件内容:"
-      default: |
-        http.host: "0.0.0.0"
-        path.config: /usr/share/logstash/pipeline
-        xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
-        xpack.monitoring.elasticsearch.username: logstash_system
-        xpack.monitoring.elasticsearch.password: changeme
-      type: "multiline"
+#    - variable: "logstash_yml"
+#      required: true
+#      description: "yml configs"
+#      label: "yml配置文件内容:"
+#      default: |
+#        http.host: "0.0.0.0"
+#        path.config: /usr/share/logstash/pipeline
+#        xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
+#        xpack.monitoring.elasticsearch.username: logstash_system
+#        xpack.monitoring.elasticsearch.password: changeme
+#      type: "multiline"
 
 logstash:
   metadata:
     logstash:
       configs: |
         ${logstash_configs}
-      yml: |
-        ${logstash_yml}
+#      yml: |
+#        ${logstash_yml}
 
 
-version: '2'
-services:
-  elasticsearch-master:
-    retain_ip: true
-    scale: 1
-    start_on_create: true
-    health_check:
-      healthy_threshold: 2
-      response_timeout: 2000
-      port: 9200
-      unhealthy_threshold: 3
-      initializing_timeout: 60000
-      interval: 2000
-      strategy: recreate
-      reinitializing_timeout: 60000
+#version: '2'
+#services:
+#  elasticsearch-master:
+#    retain_ip: true
+#    scale: 1
+#    start_on_create: true
+#    health_check:
+#      healthy_threshold: 2
+#      response_timeout: 2000
+#      port: 9200
+#      unhealthy_threshold: 3
+#      initializing_timeout: 60000
+#      interval: 2000
+#      strategy: recreate
+#      reinitializing_timeout: 60000
