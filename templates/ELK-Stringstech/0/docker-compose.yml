@@ -52,6 +52,8 @@ services:
     tty: true
     volumes_from:
       - config-filebeat
+    volumes:
+      - /var/log:/var/log
     command: filebeat -e -c /etc/filebeat/filebeat.yml
     links:
       - logstash:logstash
