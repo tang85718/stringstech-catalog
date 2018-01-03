@@ -40,10 +40,7 @@ services:
     tty: true
     volumes_from:
       - config-logstash
-    command:
-      - logstash
-      - -f
-      - /etc/logstash
+    command: logstash -f /etc/logstash
     links:
       - elasticsearch-master:elasticsearch
     labels:
@@ -55,11 +52,7 @@ services:
     tty: true
     volumes_from:
       - config-filebeat
-    command:
-      - filebeat
-      - -c
-      - /etc/filebeat/filebeat.yml
-      - -e
+    command: filebeat -e -c /etc/filebeat/filebeat.yml
     links:
       - logstash:logstash
     labels:
