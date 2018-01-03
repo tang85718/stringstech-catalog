@@ -44,7 +44,6 @@ services:
     links:
       - elasticsearch-master:elasticsearch
     labels:
-      io.rancher.sidekicks: config-master
       io.rancher.container.pull_image: always
   filebeat:
     image: docker.elastic.co/beats/filebeat:6.1.1
@@ -60,7 +59,6 @@ services:
       - logstash:logstash
     labels:
       io.rancher.scheduler.global: 'true'
-      io.rancher.sidekicks: config-master
       io.rancher.container.pull_image: always
 
 
