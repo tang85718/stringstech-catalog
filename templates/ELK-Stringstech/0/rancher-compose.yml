@@ -59,6 +59,12 @@
       description: "设置主机地址，例如: logstash:5044, 10.0.1.112:5000"
       label: "设置主机地址"
       default: logstash:5044
+    - variable: "filebeat_paths"
+      type: "string"
+      required: true
+      label: "指定日志路径"
+      description: "指定日志路径"
+      default: /opt/log/*log
 
 logstash:
   metadata:
@@ -72,6 +78,8 @@ filebeat:
     fb:
       hosts: |
         ${filebeat_hosts}
+      paths: |
+        ${filebeat_paths}
 
 # 不能加入如下语句，会导致生成配置文件失败.
 #version: '2'
