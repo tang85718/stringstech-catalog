@@ -56,10 +56,9 @@
     - variable: "filebeat_hosts"
       type: "string"
       required: true
-      description: "设置主机地址，例如: logstash:5044"
+      description: "设置主机地址，例如: logstash:5044, 10.0.1.112:5000"
       label: "设置主机地址"
-      default: |
-        ["logstash:5044"]
+      default: logstash:5044
 
 logstash:
   metadata:

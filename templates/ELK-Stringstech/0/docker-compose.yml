@@ -50,10 +50,10 @@ services:
     image: docker.elastic.co/beats/filebeat:6.1.1
     stdin_open: true
     tty: true
+    volumes:
+      - /opt/log:/opt/log
     volumes_from:
       - config-filebeat
-    volumes:
-      - /var/log:/var/log
     command: filebeat -e -c /etc/filebeat/filebeat.yml
     links:
       - logstash:logstash
