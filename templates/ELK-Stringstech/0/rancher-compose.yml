@@ -22,13 +22,12 @@
 #        xpack.monitoring.elasticsearch.username: logstash_system
 #        xpack.monitoring.elasticsearch.password: changeme
 #      type: "multiline"
-#    - variable: "filebeat_paths"
-#      type: "string"
-#      required: true
-#      label: "指定日志路径"
-#      description: "指定日志路径"
-#      default: /opt/log/*.log
-
+    - variable: "filebeat_paths"
+      type: "string"
+      required: true
+      label: "指定日志路径"
+      description: "指定日志路径"
+      default: /opt/log/*.json
     - variable: "logstash_configs"
       required: true
       label: "logstash config"
@@ -68,6 +67,7 @@ filebeat:
   metadata:
     fb:
       hosts: ${filebeat_hosts}
+      paths: ${filebeat_paths}
 # 不能加入如下语句，会导致生成配置文件失败.
 #version: '2'
 #services:
