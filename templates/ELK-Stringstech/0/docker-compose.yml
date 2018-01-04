@@ -30,12 +30,12 @@ services:
       io.rancher.container.pull_image: always
   config-logstash:
     restart: always
-    image: 10.0.1.200:5000/confd:1.5
+    image: 10.0.1.200:5000/confd:1.6
     labels:
       io.rancher.container.pull_image: always
   config-filebeat:
     restart: always
-    image: 10.0.1.200:5000/confd:1.5
+    image: 10.0.1.200:5000/confd:1.6
     labels:
       io.rancher.container.pull_image: always
   logstash:

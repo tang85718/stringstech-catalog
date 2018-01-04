@@ -67,18 +67,17 @@ catalog:
 #      description: "指定日志路径"
 #      default: /opt/log/*.log
 
-elasticsearch-master:
+logstash:
   metadata:
     logstash:
       configs: |
         ${logstash_configs}
-      fb:
-        hosts: |
-          ${filebeat_hosts}
-#        paths: |
-#          ${filebeat_paths}
-#      yml: |
-#        ${logstash_yml}
+
+filebeat:
+  metadata:
+    fb:
+      hosts: |
+        ${filebeat_hosts}
 
 # 不能加入如下语句，会导致生成配置文件失败.
 #version: '2'
