@@ -7,7 +7,7 @@
     - type: log
       enabled: true
       paths:
-        - /etc/log/*.log
+        - /opt/log/*.log
     logging.level: debug
 
   #uuid: # Unique identifier to be used for upgrades. Please see note.
