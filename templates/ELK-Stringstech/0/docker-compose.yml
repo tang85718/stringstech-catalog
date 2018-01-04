@@ -42,9 +42,10 @@ services:
       io.rancher.container.pull_image: always
   config-logstash:
     restart: always
-    image: 10.0.1.200:5000/confd:1.6
-    labels:
-      io.rancher.container.pull_image: always
+    image: 10.0.1.200:5000/confd:1.7
+  config-filebeat:
+    restart: always
+    image: 10.0.1.200:5000/confd:1.7
   filebeat:
     image: docker.elastic.co/beats/filebeat:6.1.1
     stdin_open: true
@@ -60,11 +61,7 @@ services:
       io.rancher.sidekicks: config-filebeat
       io.rancher.scheduler.global: 'true'
       io.rancher.container.pull_image: always
-  config-filebeat:
-    restart: always
-    image: 10.0.1.200:5000/confd:1.6
-    labels:
-      io.rancher.container.pull_image: always
+
 volumes:
   esdata:
     driver: local
