@@ -54,7 +54,7 @@
         }
       type: "multiline"
     - variable: "filebeat_hosts"
-      type: "multiline"
+      type: "string"
       required: true
       label: "设置主机地址"
       description: "设置主机地址，例如: logstash:5044, 10.0.1.112:5000"
