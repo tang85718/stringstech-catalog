@@ -28,7 +28,7 @@ services:
       - 5601:5601/tcp
     labels:
       io.rancher.container.pull_image: always
-  logstash:
+  logstash-master:
     image: docker.elastic.co/logstash/logstash:6.1.1
     stdin_open: true
     tty: true
@@ -56,7 +56,7 @@ services:
       - config-filebeat
     command: filebeat -e -c /etc/filebeat/filebeat.yml
     links:
-      - logstash:logstash
+      - logstash-master:logstash
     labels:
       io.rancher.sidekicks: config-filebeat
       io.rancher.scheduler.global: 'true'

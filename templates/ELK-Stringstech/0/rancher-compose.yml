@@ -54,11 +54,12 @@
         }
       type: "multiline"
     - variable: "filebeat_hosts"
-      type: "string"
+      type: "multiline"
       required: true
       label: "设置主机地址"
       description: "设置主机地址，例如: logstash:5044, 10.0.1.112:5000"
-      default: logstash:5044
+      default: |
+        logstash:5044
 #    - variable: "filebeat_paths"
 #      type: "string"
 #      required: true
@@ -66,7 +67,7 @@
 #      description: "指定日志路径"
 #      default: /opt/log/*.log
 
-logstash:
+logstash-master:
   metadata:
     logstash:
       configs: |
