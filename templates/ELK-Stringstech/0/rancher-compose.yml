@@ -67,14 +67,14 @@ catalog:
       description: "指定日志路径"
       default: /opt/log/*.log
 
-logstash:
+config-logstash:
   metadata:
     logstash:
       configs: |
         ${logstash_configs}
 #      yml: |
 #        ${logstash_yml}
-filebeat:
+config-filebeat:
   metadata:
     fb:
       hosts: |
