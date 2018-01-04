@@ -1,5 +1,4 @@
-version: '2'
-catalog:
+.catalog:
   name: "elasticsearch" # Name of the versioned template of the Catalog Entry
   version: "6.1.1-stringstech" # Version of the versioned template of the Catalog Entry
   description: tianlalu
