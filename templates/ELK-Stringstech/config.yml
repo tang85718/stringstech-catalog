@@ -1,7 +1,7 @@
 name: ELK-stringstech
 description: |
   ELK 琴弦科技专用 1.0.9
-version: 6.1.2-stringstech # Version of the Catalog to be used
+version: 6.1.1-stringstech # Version of the Catalog to be used
 category: Stringstech # Category to be used for searching catalog entries
 maintainer: tangxuyao # The maintainer of the catalog entry
 # license: # The license
