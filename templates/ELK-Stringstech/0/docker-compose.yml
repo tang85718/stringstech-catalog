@@ -58,6 +58,7 @@ services:
     links:
       - logstash:logstash
     labels:
+      io.rancher.sidekicks: config-filebeat
       io.rancher.scheduler.global: 'true'
       io.rancher.container.pull_image: always
 
