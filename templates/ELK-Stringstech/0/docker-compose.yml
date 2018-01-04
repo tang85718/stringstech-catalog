@@ -32,6 +32,8 @@ services:
     image: docker.elastic.co/logstash/logstash:6.1.1
     stdin_open: true
     tty: true
+    expose:
+      - "5044"
     volumes_from:
       - config-logstash
     command: logstash -f /etc/logstash
