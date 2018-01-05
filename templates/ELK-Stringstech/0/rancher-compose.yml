@@ -58,16 +58,13 @@
       default: logstash:5044
       type: "string"
 
-#config-logstash:
-#  metadata:
-#    logstash:
-#      configs: |
-#        ${logstash_configs}
-elasticsearch-master:
+config-logstash:
   metadata:
     logstash:
       configs: |
         ${logstash_configs}
+elasticsearch-master:
+  metadata:
     fb:
       hosts: ${filebeat_hosts}
       paths: ${filebeat_paths}
