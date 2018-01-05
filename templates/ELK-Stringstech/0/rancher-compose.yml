@@ -27,7 +27,7 @@
       required: true
       label: "指定日志路径"
       description: "指定日志路径"
-      default: /opt/log/*.json
+      default: /opt/log/json.log
     - variable: "logstash_configs"
       required: true
       label: "logstash config"
