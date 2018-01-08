@@ -1,7 +1,7 @@
 version: '2'
 services:
   elasticsearch-master:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    image: images.elastic.co/elasticsearch/elasticsearch:6.1.1
     stdin_open: true
     tty: true
     environment:
@@ -19,7 +19,7 @@ services:
 #      - 9200:9200
 #      - 9300:9300
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.1.1
+    image: images.elastic.co/kibana/kibana:6.1.1
     stdin_open: true
     tty: true
     links:
@@ -29,7 +29,7 @@ services:
     labels:
       io.rancher.container.pull_image: always
   logstash-master:
-    image: docker.elastic.co/logstash/logstash:6.1.1
+    image: images.elastic.co/logstash/logstash:6.1.1
     stdin_open: true
     tty: true
     volumes_from:
@@ -47,7 +47,7 @@ services:
     restart: always
     image: 10.0.1.200:5000/confd:1.8
   filebeat:
-    image: docker.elastic.co/beats/filebeat:6.1.1
+    image: images.elastic.co/beats/filebeat:6.1.1
     stdin_open: true
     tty: true
     volumes:

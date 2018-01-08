@@ -1,0 +1,11 @@
+version: '2'
+services:
+  tianlalu:
+    image: images.elastic.co/elasticsearch/elasticsearch:6.1.1
+    stdin_open: true
+    tty: true
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+#    ports:
+#      - 9200:9200
+#      - 9300:9300
