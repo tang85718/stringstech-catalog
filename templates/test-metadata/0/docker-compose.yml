@@ -1,9 +1,6 @@
 version: '2'
 services:
-  tianlalu:
+  metadata-cli:
     image: ubuntu:17.10
     stdin_open: true
     tty: true
-#    ports:
-#      - 9200:9200
-#      - 9300:9300
