@@ -6,8 +6,7 @@
   #minimum_rancher_version: # The minimum version of Rancher that supports the template
   #questions: #Used to request user input for configuration options
 
-services:
-  metadata-cli:
-    metadata:
-      test:
-        name: tangxy
+metadata-cli:
+  metadata:
+    test:
+      name: tangxy
