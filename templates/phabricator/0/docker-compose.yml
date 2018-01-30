@@ -5,7 +5,8 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     labels:
-      io.rancher.container.requested_ip: 10.42.2.3
+#      io.rancher.container.requested_ip: 10.42.2.3
+      stringstech.apps: value
     ports:
       - '3306:3306'
     volumes:
@@ -14,7 +15,8 @@ services:
     image: 'bitnami/phabricator:latest'
     labels:
       kompose.service.type: nodeport
-      io.rancher.container.requested_ip: 10.42.2.2
+#      io.rancher.container.requested_ip: 10.42.2.2
+      stringstech.apps: value
     ports:
       - '80:80'
       - '443:443'
