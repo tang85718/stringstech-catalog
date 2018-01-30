@@ -12,6 +12,7 @@ services:
     image: 'bitnami/phabricator:latest'
     labels:
       kompose.service.type: nodeport
+      io.rancher.container.requested_ip: 10.42.2.2
     ports:
       - '80:80'
       - '443:443'
@@ -30,6 +31,7 @@ services:
       - SMTP_PORT=587
       - SMTP_USER=noreply@stringstech.co
       - SMTP_PASSWORD=Bucu0421
+
 volumes:
   mariadb_data:
     driver: local

@@ -6,6 +6,8 @@
   #minimum_rancher_version: # The minimum version of Rancher that supports the template
   questions: #Used to request user input for configuration options
 
+phabricator:
+  retain_ip: true
 #logstash-master:
 #  metadata:
 #    logstash:
