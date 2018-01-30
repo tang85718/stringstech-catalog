@@ -1,0 +1,18 @@
+.catalog:
+  name: "phabricator" # Name of the versioned template of the Catalog Entry
+  version: "1.0.0" # Version of the versioned template of the Catalog Entry
+  description: Facebook出品，bitnami打包版本
+  #uuid: # Unique identifier to be used for upgrades. Please see note.
+  #minimum_rancher_version: # The minimum version of Rancher that supports the template
+  questions: #Used to request user input for configuration options
+
+#logstash-master:
+#  metadata:
+#    logstash:
+#      configs: |
+#        ${logstash_configs}
+#filebeat:
+#  metadata:
+#    fb:
+#      hosts: ${filebeat_hosts}
+#      paths: ${filebeat_paths}
