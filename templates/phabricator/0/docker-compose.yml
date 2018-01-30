@@ -23,7 +23,7 @@ services:
     depends_on:
       - mariadb
     environment:
-      - PHABRICATOR_HOST=10.42.2.2
+      - PHABRICATOR_HOST=10.0.1.111
       - PHABRICATOR_EMAIL=daulgas.tang@stringstech.co
       - PHABRICATOR_USERNAME=admin
       - PHABRICATOR_PASSWORD=taNg##85718
