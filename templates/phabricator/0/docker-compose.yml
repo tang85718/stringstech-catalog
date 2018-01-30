@@ -4,6 +4,8 @@ services:
     image: 'bitnami/mariadb:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+    labels:
+      io.rancher.container.requested_ip: 10.42.2.3
     ports:
       - '3306:3306'
     volumes:

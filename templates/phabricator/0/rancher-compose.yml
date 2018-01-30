@@ -8,6 +8,8 @@
 
 phabricator:
   retain_ip: true
+mariadb:
+  retain_ip: true
 #logstash-master:
 #  metadata:
 #    logstash:
