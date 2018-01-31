@@ -5,8 +5,8 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     labels:
-#      io.rancher.container.requested_ip: 10.42.2.3
-      stringstech.apps: value
+      io.rancher.container.requested_ip: 10.42.2.3
+      stringstech.apps: true
     ports:
       - '3306:3306'
     volumes:
@@ -15,8 +15,8 @@ services:
     image: 'bitnami/phabricator:latest'
     labels:
       kompose.service.type: nodeport
-#      io.rancher.container.requested_ip: 10.42.2.2
-      stringstech.apps: value
+      io.rancher.container.requested_ip: 10.42.2.2
+      stringstech.apps: true
     ports:
       - '80:80'
       - '443:443'
@@ -25,7 +25,7 @@ services:
     depends_on:
       - mariadb
     environment:
-      - PHABRICATOR_HOST=10.0.1.111
+      - PHABRICATOR_HOST=10.0.1.113
       - PHABRICATOR_EMAIL=daulgas.tang@stringstech.co
       - PHABRICATOR_USERNAME=admin
       - PHABRICATOR_PASSWORD=taNg##85718
