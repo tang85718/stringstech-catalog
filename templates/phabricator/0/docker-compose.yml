@@ -17,9 +17,9 @@ services:
       kompose.service.type: nodeport
       io.rancher.container.requested_ip: 10.42.2.2
       stringstech.apps: true
-    ports:
-      - '80:80'
-      - '443:443'
+#    ports:
+#      - '80:80'
+#      - '443:443'
     volumes:
       - 'phabricator_data:/bitnami'
     depends_on:
