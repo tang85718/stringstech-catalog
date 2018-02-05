@@ -1,0 +1,6 @@
+[template]
+src = "nginx.yml.tmpl"
+dest = "/etc/nginx/conf.d/proxy.conf"
+keys = [
+    "/self/stack/metadata/conf",
+]

@@ -1,0 +1,68 @@
+.catalog:
+  name: "nginx" # Name of the versioned template of the Catalog Entry
+  version: "1.0.0" # Version of the versioned template of the Catalog Entry
+  description: 用来反向代理/ssh穿透
+  #uuid: # Unique identifier to be used for upgrades. Please see note.
+  #minimum_rancher_version: # The minimum version of Rancher that supports the template
+  questions: #Used to request user input for configuration options
+    - variable: "servers"
+      required: true
+      label: "new.conf"
+      default: |
+        server {
+          listen 80;
+          server_name pha.strings.tech;
+
+          location / {
+        	  proxy_pass http://load-b:180;
+        	  proxy_set_header Host pha.strings.tech;
+          }
+        }
+
+        server {
+          listen 80;
+          server_name git.strings.tech;
+          location / {
+            proxy_pass http://load-b:181;
+            proxy_set_header Host git.strings.tech;
+          }
+        }
+
+        server {
+          listen 80;
+          server_name art.strings.tech;
+          location / {
+            proxy_pass http://10.0.1.112:8081;
+          }
+        }
+      type: "multiline"
+
+proxy-nginx:
+  retain_ip: true
+  metadata:
+    conf: ${servers}
+
+load-balancing:
+  lb_config:
+    certs: []
+    port_rules:
+    - priority: 1
+      protocol: http
+      service: phabricator/phabricator
+      source_port: 180
+      target_port: 80
+    - priority: 2
+      protocol: http
+      service: gitlab/gitlab-server
+      source_port: 181
+      target_port: 80
+#logstash-master:
+#  metadata:
+#    logstash:
+#      configs: |
+#        ${logstash_configs}
+#filebeat:
+#  metadata:
+#    fb:
+#      hosts: ${filebeat_hosts}
+#      paths: ${filebeat_paths}

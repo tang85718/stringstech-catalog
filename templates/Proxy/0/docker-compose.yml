@@ -1,0 +1,27 @@
+version: '2'
+services:
+  proxy-nginx-conf:
+    image: '10.0.1.200:5000/nginx-confd:latest'
+  proxy-nginx:
+    image: 'nginx'
+    stdin_open: true
+    tty: true
+    dns:
+      - 10.0.1.112
+    labels:
+      stringstech.apps: true
+    links:
+      - load-balancing:load-b
+    ports:
+      - '80:80'
+      - '22:22'
+    volumes_from:
+      - config-filebeat
+  load-balancing:
+    image: rancher/lb-service-haproxy:v0.7.15
+    expose:
+    - 180:180/tcp
+    - 181:181/tcp
+    labels:
+      io.rancher.scheduler.affinity:host_label: stringstech.host=true
+      io.rancher.container.agent_service.drain_provider: 'true'
